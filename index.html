@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Поштова форма</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+      text-align: center;
+    }
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 50%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+    }
+    th {
+      background-color: #990000;
+      color: #fff;
+      text-align: center;
+    }
+    input[type="text"],
+    textarea {
+      width: 95%;
+      padding: 5px;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #990000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #cc0000;
+    }
+  </style>
+  <script type="text/javascript">
+    function validateMailForm() {
+      var name = document.getElementById("name").value.trim();
+      var subject = document.getElementById("subject").value.trim();
+      var message = document.getElementById("message").value.trim();
+      
+      if (name === "") {
+        alert("Будь ласка, введіть ваше ім'я.");
+        document.getElementById("name").focus();
+        return false;
+      }
+      if (subject === "") {
+        alert("Будь ласка, введіть тему повідомлення.");
+        document.getElementById("subject").focus();
+        return false;
+      }
+      if (message === "") {
+        alert("Будь ласка, введіть повідомлення.");
+        document.getElementById("message").focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>Поштова форма</h1>
+  <form method="post" action="mailto:someone@example.com" enctype="text/plain" onsubmit="return validateMailForm();">
+    <table>
+      <tr>
+        <th colspan="2">Надіслати повідомлення</th>
+      </tr>
+      <tr>
+        <td>Ім'я:</td>
+        <td><input type="text" id="name" name="Name"></td>
+      </tr>
+      <tr>
+        <td>Тема:</td>
+        <td><input type="text" id="subject" name="Subject"></td>
+      </tr>
+      <tr>
+        <td>Повідомлення:</td>
+        <td><textarea id="message" name="Message" rows="5"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:center;">
+          <button type="submit">Відправити</button>
+          <button type="reset">Очистити</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
